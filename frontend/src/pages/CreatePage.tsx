@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container } from "../components/ui/Container";
 import VStack from "@/components/ui/VStack";
-import { Text } from "@/components/ui/Text";
+
 import { Box } from "@/components/ui/Box";
 import { useTheme } from "@/context/ThemeContext";
 import { Input } from "@/components/ui/Input";
@@ -15,6 +15,7 @@ function CreatePage() {
 
   const { toast } = useToast();
   const [newProduct, setNewProduct] = useState({
+    _id: "",
     name: "",
     price: "",
     image: "",
@@ -34,20 +35,16 @@ function CreatePage() {
         description: message,
         variant: "default",
       });
+      setNewProduct({ _id: "", name: "", price: "", image: "" });
     }
-    setNewProduct({ name: "", price: "", image: "" });
   };
+
   return (
     <Container className="max-w-sm ">
       <VStack>
-        <Text
-          className={`text-center mb-8 ${bgColor}`}
-          variant="h1"
-          weight="bold"
-          size="text-4xl"
-        >
+        <text className={`text-center mb-8 ${bgColor}`}>
           Create New Product
-        </Text>
+        </text>
         <Box className={`w-full ${bgColor} p-6 rounded-lg shadow-md`}>
           <VStack>
             <Input

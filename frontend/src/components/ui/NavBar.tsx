@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container } from "./Container";
 import { Flex } from "./Flex";
-import { Text } from "./Text";
+
 import { HStack } from "./HStack";
 import { Button } from "./button";
 import { PlusSquareIcon } from "lucide-react";
@@ -20,13 +20,9 @@ function NavBar() {
         justify="between"
         direction="column"
       >
-        <Text
-          className="bg-gradient-to-r from-cyan-400 to-blue-500 uppercase text-center sm:text-3xl"
-          size="text-xl"
-          weight="bold"
-        >
+        <text className="bg-gradient-to-r from-cyan-400 to-blue-500 uppercase text-center text-xl sm:text-3xl">
           <Link to={"/"}>Product Store 🛒</Link>
-        </Text>
+        </text>
         <HStack>
           <Link to={"/create"}>
             <Button>

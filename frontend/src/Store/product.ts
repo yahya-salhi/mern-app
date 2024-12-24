@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface Product {
-  _id?: string;
+  _id: string;
   name: string;
   image: string;
   price: string;

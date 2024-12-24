@@ -1,6 +1,6 @@
 import VStack from "@/components/ui/VStack";
 import { Container } from "../components/ui/Container";
-import { Text } from "@/components/ui/Text";
+
 import { useTheme } from "@/context/ThemeContext";
 import { Link } from "react-router-dom";
 import { SimpleGrid } from "@/components/ui/SimpleGride";
@@ -19,14 +19,8 @@ export default function HomePage() {
   return (
     <Container>
       <VStack spacing="gap-4">
-        <Text
-          className={`text-center mb-8 ${bgColor}`}
-          variant="p"
-          weight="light"
-          size="text-2xl"
-        >
-          Current Product 📌
-        </Text>
+        <p className={`text-center mb-8 ${bgColor}`}>Product Store 🛒</p>
+
         <SimpleGrid
           columns={{
             base: 1,
@@ -39,27 +33,20 @@ export default function HomePage() {
           {" "}
           {products.map((product) =>
             product._id ? (
-              <ProductCard key={product._id as string} product={product} />
+              <ProductCard
+                key={product._id as string}
+                product={{ ...product, price: Number(product.price) }}
+              />
             ) : null
           )}
         </SimpleGrid>
         {products.length === 0 && (
-          <Text
-            size="text-xl"
-            className="text-center text-zinc-500"
-            weight="bold"
-          >
+          <text className="text-center text-zinc-500 text-xl">
             No Product found 😭
             <Link to={"/create"}>
-              <Text
-                variant="span"
-                color="text-sky-400"
-                className="hover:underline"
-              >
-                Create a Product
-              </Text>
+              <span className="text-sky-400">Create a Product</span>
             </Link>
-          </Text>
+          </text>
         )}
       </VStack>
     </Container>
